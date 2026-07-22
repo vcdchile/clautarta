@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Puntos de venta — Clautartas</title>
+<meta name="description" content="Dónde encontrar y comprar los productos y cursos de Clautartas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="puntos-venta.html">
+
+<header id="site-header" class="site-header"></header>
+
+<main class="container">
+  <section class="page-hero">
+    <span class="eyebrow">Puntos de venta</span>
+    <h1>Dónde encontrarnos</h1>
+    <p>Ferias, despacho a domicilio y nuestra tienda de cursos online.</p>
+  </section>
+
+  <section class="section">
+    <div class="pv-list" id="pvList"></div>
+  </section>
+
+  <section class="section" style="margin-top:10px;">
+    <div style="background:var(--pink-soft); border-radius:var(--radius-lg); padding:34px 24px; text-align:center;">
+      <h2 style="font-size:1.4rem;">¿Quieres coordinar un pedido?</h2>
+      <p style="color:var(--cocoa-soft); max-width:460px; margin:0 auto 18px;">Escríbeme directo por WhatsApp y vemos disponibilidad.</p>
+      <a class="btn btn-whatsapp" id="ctaWsp" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderPuntosVenta();
+    document.getElementById("ctaWsp").href = waLink();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto — Clautartas</title>
+<meta name="description" content="Contáctanos por WhatsApp, Instagram o email.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contacto.html">
+
+<header id="site-header" class="site-header"></header>
+
+<main class="container">
+  <section class="page-hero">
+    <span class="eyebrow">Contacto</span>
+    <h1>Hablemos</h1>
+    <p>Escríbeme por el canal que prefieras, te respondo lo antes posible.</p>
+  </section>
+
+  <section class="section">
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="ic"></div>
+        <h3>WhatsApp</h3>
+        <p>Consultas sobre cursos, pedidos y pagos.</p>
+        <a class="btn btn-whatsapp" id="ctaWsp" href="#" target="_blank" rel="noopener">Escribir ahora</a>
+      </div>
+      <div class="contact-card">
+        <div class="ic"></div>
+        <h3>Instagram</h3>
+        <p>Sígueme para tips, recetas y novedades.</p>
+        <a class="btn btn-outline" id="ctaIg" href="#" target="_blank" rel="noopener">Ir a Instagram</a>
+      </div>
+      <div class="contact-card">
+        <div class="ic"></div>
+        <h3>Email</h3>
+        <p>Para consultas más formales o alianzas.</p>
+        <a class="btn btn-outline" id="ctaMail" href="#">Enviar email</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(".contact-card .ic")[0].innerHTML = ICONS.whatsapp;
+    document.querySelectorAll(".contact-card .ic")[1].innerHTML = ICONS.instagram;
+    document.querySelectorAll(".contact-card .ic")[2].innerHTML = ICONS.mail;
+    document.getElementById("ctaWsp").href = waLink();
+    document.getElementById("ctaIg").href = SITE.instagram;
+    document.getElementById("ctaMail").href = "mailto:" + SITE.email;
+  });
+</script>
+</body>
+</html>

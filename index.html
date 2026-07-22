@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clautartas — Cursos online de repostería para emprender</title>
+<meta name="description" content="Aprende a hacer y vender tartas y postres desde casa. Cursos online paso a paso, con planilla de costos, comunidad y videos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="index.html">
+
+<header id="site-header" class="site-header"></header>
+
+<main>
+  <section class="hero-carousel" id="heroCarousel"></section>
+
+  <section class="section container" style="text-align:center; padding-top:34px;">
+    <span class="page-hero eyebrow">Bienvenida a Clautartas</span>
+    <h1 style="font-size:1.9rem; max-width:640px; margin:0 auto 10px;">Aprende a hacer y vender tartas desde tu casa</h1>
+    <p style="color:var(--cocoa-soft); max-width:520px; margin:0 auto;">Cursos online paso a paso, con planilla de costos, comunidad de alumnas y videos cortos para aprender a tu ritmo.</p>
+  </section>
+
+  <div class="scallop-divider" style="margin:30px 0 0;"></div>
+
+  <section class="section container">
+    <h2 class="section-title">Nuestros cursos</h2>
+    <p class="section-subtitle">Haz clic en cualquier curso para ver el detalle, videos y forma de pago.</p>
+    <div class="course-list" id="courseList"></div>
+  </section>
+
+  <section class="section container" style="margin-top:20px;">
+    <div style="background:var(--pink-soft); border-radius:var(--radius-lg); padding:34px 24px; text-align:center;">
+      <h2 style="font-size:1.4rem;">¿Tienes dudas sobre qué curso elegir?</h2>
+      <p style="color:var(--cocoa-soft); max-width:460px; margin:0 auto 18px;">Escríbeme por WhatsApp y te ayudo a elegir el curso que más se ajuste a lo que quieres lograr.</p>
+      <a class="btn btn-whatsapp" id="ctaWsp" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderCarousel();
+    renderCourseList();
+    document.getElementById("ctaWsp").href = waLink();
+  });
+</script>
+</body>
+</html>

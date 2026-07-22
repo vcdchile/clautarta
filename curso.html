@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Curso — Clautartas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="curso.html">
+
+<header id="site-header" class="site-header"></header>
+
+<main class="container">
+  <div id="cursoDetalle"></div>
+
+  <section class="section" style="margin-top:10px;">
+    <h2 class="section-title" style="font-size:1.3rem;">Otros cursos que te pueden interesar</h2>
+    <div id="relatedCourses" style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:16px;"></div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", renderCursoDetalle);
+</script>
+</body>
+</html>

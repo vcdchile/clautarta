@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resultados de alumnas — Clautartas</title>
+<meta name="description" content="Conoce los resultados y testimonios de alumnas que ya están vendiendo sus tartas y postres.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="resultados.html">
+
+<header id="site-header" class="site-header"></header>
+
+<main class="container">
+  <section class="page-hero">
+    <span class="eyebrow">Resultados</span>
+    <h1>Lo que están logrando nuestras alumnas</h1>
+    <p>Historias reales de mujeres que empezaron desde cero y hoy venden sus propias tartas y postres.</p>
+  </section>
+
+  <div class="stats-row" id="statsRow"></div>
+
+  <section class="section">
+    <div class="testi-grid" id="testiGrid"></div>
+  </section>
+
+  <section class="section" style="margin-top:10px;">
+    <div style="background:var(--pink-soft); border-radius:var(--radius-lg); padding:34px 24px; text-align:center;">
+      <h2 style="font-size:1.4rem;">¿Quieres ser la próxima historia?</h2>
+      <p style="color:var(--cocoa-soft); max-width:460px; margin:0 auto 18px;">Revisa nuestros cursos y elige el que te ayude a dar el primer paso.</p>
+      <a class="btn btn-primary" href="index.html">Ver cursos</a>
+    </div>
+  </section>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="js/data.js"></script>
+<script src="js/components.js"></script>
+<script src="js/render.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderStats();
+    renderTestimonials();
+  });
+</script>
+</body>
+</html>
