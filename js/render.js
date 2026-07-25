@@ -3,10 +3,21 @@
    usando los datos de js/data.js
    ============================================================ */
 
+/* Convierte un precio en formato "$29.990" a un valor referencial en USD,
+   usando la tasa SITE.usdRate definida en js/data.js */
+function clpToUsd(clpString) {
+  const num = Number(String(clpString).replace(/[^\d]/g, ""));
+  if (!num || !SITE.usdRate) return "";
+  const usd = num / SITE.usdRate;
+  return "US$" + usd.toFixed(2);
+}
+
+const RESOURCE_ICONS = { pdf: ICONS.pdf, planilla: ICONS.planilla, wsp: ICONS.whatsapp, telegram: ICONS.telegram, videos: ICONS.videos };
+
 function resourceChip(tipo, url) {
   if (!url) return "";
   const labels = { pdf: "PDF", planilla: "Planilla de costo", wsp: "Grupo WSP", telegram: "Grupo Telegram", videos: "Videos" };
-  return `<span class="resource-chip">${ICONS[tipo]} ${labels[tipo]}</span>`;
+  return `<span class="resource-info">${RESOURCE_ICONS[tipo]} ${labels[tipo]}</span>`;
 }
 
 function resourceRow(tipo, url) {
@@ -14,7 +25,7 @@ function resourceRow(tipo, url) {
   const labels = { pdf: "Descargar PDF", planilla: "Planilla de costo", wsp: "Unirme al grupo WSP", telegram: "Unirme a Telegram", videos: "Ver videos paso a paso" };
   return `
     <a class="resource-row" href="${url}" target="_blank" rel="noopener">
-      <span class="ic">${ICONS[tipo]}</span>
+      <span class="ic">${RESOURCE_ICONS[tipo]}</span>
       <span>${labels[tipo]}</span>
     </a>`;
 }
@@ -75,7 +86,11 @@ function courseCardHTML(c) {
         <span class="course-tag">${c.categoria}</span>
         <h3>${c.titulo}</h3>
         <p class="course-desc">${c.descripcionCorta}</p>
-        <div class="course-resources">${chips}</div>
+        <div class="course-price">
+          <span class="clp">${c.precio}</span>
+          <span class="usd">${clpToUsd(c.precio)}</span>
+        </div>
+        ${chips ? `<div class="course-resources"><span class="resources-label">Incluye:</span>${chips}</div>` : ""}
         <a class="course-cta" href="curso.html?id=${c.id}">Ver curso ${ICONS.arrowRight}</a>
       </div>
     </article>
@@ -92,14 +107,36 @@ function renderCourseList() {
 function renderTestimonials() {
   const el = document.getElementById("testiGrid");
   if (!el) return;
+
+  const mediaHTML = (t) => {
+    if (t.video) {
+      const videoId = (t.video.split("/video/")[1] || "").split("?")[0];
+      return `
+        <div class="testi-video">
+          <blockquote class="tiktok-embed" cite="${t.video}" data-video-id="${videoId}" style="max-width:100%;min-width:auto;">
+            <section><a target="_blank" rel="noopener" href="${t.video}">Ver video en TikTok</a></section>
+          </blockquote>
+        </div>`;
+    }
+    return `<img src="${t.foto}" alt="${t.nombre}" loading="lazy">`;
+  };
+
   el.innerHTML = TESTIMONIOS.map(t => `
     <div class="testi-card">
-      <img src="${t.foto}" alt="${t.nombre}" loading="lazy">
+      ${mediaHTML(t)}
       <p class="testi-quote">“${t.quote}”</p>
       <div class="testi-author">${t.nombre}</div>
       <div class="testi-role">${t.rol}</div>
     </div>
   `).join("");
+
+  /* Carga el script de embed de TikTok solo si hay al menos un testimonio en video */
+  if (TESTIMONIOS.some(t => t.video)) {
+    const s = document.createElement("script");
+    s.src = "https://www.tiktok.com/embed.js";
+    s.async = true;
+    document.body.appendChild(s);
+  }
 }
 
 function renderStats() {
@@ -114,19 +151,36 @@ function renderStats() {
 }
 
 /* ---------- PUNTOS DE VENTA ---------- */
-function renderPuntosVenta() {
+function renderPuntosVenta(filtro) {
   const el = document.getElementById("pvList");
   if (!el) return;
-  el.innerHTML = PUNTOS_VENTA.map(p => `
-    <div class="pv-card">
-      <span class="pv-icon">${ICONS.pin}</span>
-      <div>
-        <h3>${p.nombre}</h3>
-        <p>${p.detalle}</p>
-        <a class="pv-link" href="${p.link}" target="_blank" rel="noopener">${p.linkTexto} ${ICONS.arrowRight}</a>
+
+  const f = (filtro || "").trim().toLowerCase();
+  const data = !f ? PUNTOS_VENTA : PUNTOS_VENTA.filter(p =>
+    (p.nombre || "").toLowerCase().includes(f) ||
+    (p.ciudad || "").toLowerCase().includes(f) ||
+    (p.contacto || "").toLowerCase().includes(f)
+  );
+
+  if (!data.length) {
+    el.innerHTML = `<p class="pv-empty">No encontramos puntos de venta para “${filtro}”.</p>`;
+    return;
+  }
+
+  el.innerHTML = `
+    <div class="pv-table">
+      <div class="pv-row pv-row-head">
+        <span>Nombre</span><span>Ciudad</span><span>Contacto</span>
       </div>
+      ${data.map(p => `
+        <div class="pv-row">
+          <span class="pv-nombre">${p.nombre}</span>
+          <span class="pv-ciudad">${p.ciudad || "—"}</span>
+          <span class="pv-contacto">${p.contacto || "—"}</span>
+        </div>
+      `).join("")}
     </div>
-  `).join("");
+  `;
 }
 
 /* ---------- CURSO DETALLE (curso.html) ---------- */
@@ -139,6 +193,12 @@ function renderCursoDetalle() {
   const curso = CURSOS.find(c => c.id === id) || CURSOS[0];
 
   document.title = `${curso.titulo} — Clautartas`;
+  const metaDesc = document.getElementById("metaDescripcion");
+  if (metaDesc) metaDesc.setAttribute("content", curso.descripcionCorta);
+  const ogTitulo = document.getElementById("ogTitulo");
+  if (ogTitulo) ogTitulo.setAttribute("content", `${curso.titulo} — Clautartas`);
+  const ogDesc = document.getElementById("ogDescripcion");
+  if (ogDesc) ogDesc.setAttribute("content", curso.descripcionCorta);
 
   const temasHTML = curso.temas.map(t => `<li>${ICONS.check}<span>${t}</span></li>`).join("");
 
@@ -191,9 +251,10 @@ function renderCursoDetalle() {
       <aside class="curso-sidebar">
         <div class="price-card">
           <div class="precio">${curso.precio}</div>
+          <div class="precio-usd">${clpToUsd(curso.precio)}</div>
           <div class="precio-note">${curso.precioNota}</div>
-          <a class="btn btn-primary" href="${curso.linkCompra}" target="_blank" rel="noopener">Comprar curso ${ICONS.arrowRight}</a>
-          <a class="btn btn-outline" href="${waLink(`Hola! Tengo una consulta sobre el curso "${curso.titulo}"`)}" target="_blank" rel="noopener">Preguntar por WhatsApp</a>
+          <a class="btn btn-primary" href="${waLink(`Hola Clau! Quiero comprar el curso "${curso.titulo}" (${curso.precio}). ¿Cómo sigo?`)}" target="_blank" rel="noopener">Comprar por WhatsApp ${ICONS.arrowRight}</a>
+          <a class="btn btn-outline" href="${waLink(`Hola! Tengo una consulta sobre el curso "${curso.titulo}"`)}" target="_blank" rel="noopener">Consultar antes de comprar</a>
         </div>
 
         ${resourcesHTML ? `<div class="resource-panel">${resourcesHTML}</div>` : ""}

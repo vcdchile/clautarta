@@ -24,6 +24,7 @@ const ICONS = {
   pin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>`,
   mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>`,
   clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
+  search: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
 };
 
 function waLink(customMsg) {
@@ -31,24 +32,9 @@ function waLink(customMsg) {
   return `https://wa.me/${SITE.whatsapp}?text=${msg}`;
 }
 
-/* ---------- LOGO (festoneado, estilo boceto) ---------- */
+/* ---------- LOGO ---------- */
 function logoSVG() {
-  return `
-  <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-    ${Array.from({length: 18}).map((_, i) => {
-      const angle = (i / 18) * 2 * Math.PI;
-      const x = 50 + 44 * Math.cos(angle);
-      const y = 50 + 44 * Math.sin(angle);
-      return `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="6.2" fill="#F3B8C4"/>`;
-    }).join("")}
-    <circle cx="50" cy="50" r="40" fill="#FDF8F3"/>
-    <g transform="translate(50,54)">
-      <path d="M-16,0 L16,0 L12,20 a12,12 0 0 1 -24,0 Z" fill="#B23A5C"/>
-      <path d="M-16,0 C-16,-9 -8,-15 0,-15 C8,-15 16,-9 16,0 Z" fill="#FBE1E6" stroke="#4A2E28" stroke-width="1.5"/>
-      <circle cx="0" cy="-19" r="4.2" fill="#D9A441"/>
-    </g>
-    <text x="50" y="34" text-anchor="middle" font-family="Fraunces, serif" font-style="italic" font-weight="700" font-size="15" fill="#B23A5C">Clau</text>
-  </svg>`;
+  return `<img src="img/logo.png" alt="Clautartas" class="logo-svg">`;
 }
 
 /* ---------- HEADER + NAV + WHATSAPP FLOAT + FOOTER ---------- */
@@ -80,6 +66,7 @@ function renderHeader(activePage) {
           <a href="${SITE.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${ICONS.instagram}</a>
           <a href="${SITE.tiktokPerfil}" target="_blank" rel="noopener" aria-label="TikTok">${ICONS.tiktok}</a>
           <a href="${SITE.facebook}" target="_blank" rel="noopener" aria-label="Facebook">${ICONS.facebook}</a>
+          <a href="${SITE.telegramCanal}" target="_blank" rel="noopener" aria-label="Telegram">${ICONS.telegram}</a>
         </nav>
       </div>
 
@@ -87,9 +74,21 @@ function renderHeader(activePage) {
         <div class="nav-bar">
           <span class="nav-brand-mini">Clautartas</span>
           <div class="nav-links">${desktopLinks}</div>
-          <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-            ${ICONS.menu}
-          </button>
+          <div class="nav-actions">
+            <button class="nav-search-toggle" id="navSearchToggle" aria-label="Buscar en el sitio" aria-expanded="false">
+              ${ICONS.search}
+            </button>
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+              ${ICONS.menu}
+            </button>
+          </div>
+        </div>
+        <div class="nav-search-panel" id="navSearchPanel">
+          <div class="nav-search-box">
+            ${ICONS.search}
+            <input type="search" id="navSearchInput" placeholder="Buscar cursos, puntos de venta, páginas...">
+          </div>
+          <div class="nav-search-results" id="navSearchResults"></div>
         </div>
         <div class="nav-mobile-panel" id="navMobilePanel">
           ${mobileLinks}
@@ -105,7 +104,10 @@ function renderHeader(activePage) {
       panel.classList.toggle("open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.innerHTML = open ? ICONS.close : ICONS.menu;
+      if (open) closeSearch();
     });
+
+    initSiteSearch();
   }
 
   /* Floating WhatsApp button — every page */
@@ -134,6 +136,7 @@ function renderFooter() {
           <a href="${SITE.instagram}" target="_blank" rel="noopener" aria-label="Instagram">${ICONS.instagram}</a>
           <a href="${SITE.tiktokPerfil}" target="_blank" rel="noopener" aria-label="TikTok">${ICONS.tiktok}</a>
           <a href="${SITE.facebook}" target="_blank" rel="noopener" aria-label="Facebook">${ICONS.facebook}</a>
+          <a href="${SITE.telegramCanal}" target="_blank" rel="noopener" aria-label="Telegram">${ICONS.telegram}</a>
         </div>
       </div>
       <div>
@@ -151,6 +154,110 @@ function renderFooter() {
     </div>
     <div class="footer-bottom">© ${new Date().getFullYear()} Clautartas. Todos los derechos reservados.</div>
   `;
+}
+
+/* ---------- BUSCADOR GLOBAL DEL SITIO ---------- */
+function buildSearchIndex() {
+  const index = [
+    { tipo: "Página", titulo: "Principal", sub: "Inicio y cursos destacados", url: "index.html", keywords: "inicio home principal cursos repostería" },
+    { tipo: "Página", titulo: "Resultados", sub: "Testimonios y resultados de alumnas", url: "resultados.html", keywords: "resultados testimonios alumnas videos" },
+    { tipo: "Página", titulo: "Puntos de venta", sub: "Dónde encontrarnos", url: "puntos-venta.html", keywords: "puntos de venta tienda feria ciudad" },
+    { tipo: "Página", titulo: "Contacto", sub: "Escríbenos", url: "contacto.html", keywords: "contacto whatsapp instagram email telegram" },
+  ];
+
+  if (typeof CURSOS !== "undefined") {
+    CURSOS.forEach(c => {
+      index.push({
+        tipo: "Curso",
+        titulo: c.titulo,
+        sub: c.categoria,
+        url: `curso.html?id=${c.id}`,
+        keywords: `${c.titulo} ${c.categoria} ${c.subtitulo} ${c.descripcionCorta}`.toLowerCase(),
+      });
+    });
+  }
+
+  if (typeof PUNTOS_VENTA !== "undefined") {
+    PUNTOS_VENTA.forEach(p => {
+      index.push({
+        tipo: "Punto de venta",
+        titulo: p.nombre,
+        sub: p.ciudad || "",
+        url: "puntos-venta.html",
+        keywords: `${p.nombre} ${p.ciudad || ""} ${p.contacto || ""}`.toLowerCase(),
+      });
+    });
+  }
+
+  return index;
+}
+
+function closeSearch() {
+  const panel = document.getElementById("navSearchPanel");
+  const toggle = document.getElementById("navSearchToggle");
+  if (!panel || !toggle) return;
+  panel.classList.remove("open");
+  toggle.setAttribute("aria-expanded", "false");
+}
+
+function initSiteSearch() {
+  const toggle = document.getElementById("navSearchToggle");
+  const panel = document.getElementById("navSearchPanel");
+  const input = document.getElementById("navSearchInput");
+  const results = document.getElementById("navSearchResults");
+  if (!toggle || !panel || !input || !results) return;
+
+  const index = buildSearchIndex();
+  let open = false;
+
+  function renderResults(query) {
+    const q = query.trim().toLowerCase();
+    if (!q) {
+      results.innerHTML = `<p class="nav-search-hint">Escribe para buscar cursos, puntos de venta o páginas del sitio.</p>`;
+      return;
+    }
+    const matches = index
+      .filter(item => item.keywords.includes(q) || item.titulo.toLowerCase().includes(q))
+      .slice(0, 8);
+    if (!matches.length) {
+      results.innerHTML = `<p class="nav-search-hint">No encontramos resultados para “${query}”.</p>`;
+      return;
+    }
+    results.innerHTML = matches.map(m => `
+      <a class="nav-search-item" href="${m.url}">
+        <span class="nav-search-tag">${m.tipo}</span>
+        <span class="nav-search-titulo">${m.titulo}</span>
+        ${m.sub ? `<span class="nav-search-sub">${m.sub}</span>` : ""}
+      </a>
+    `).join("");
+  }
+
+  toggle.addEventListener("click", () => {
+    open = !open;
+    panel.classList.toggle("open", open);
+    toggle.setAttribute("aria-expanded", String(open));
+    const mobilePanel = document.getElementById("navMobilePanel");
+    const navToggle = document.getElementById("navToggle");
+    if (open && mobilePanel) {
+      mobilePanel.classList.remove("open");
+      if (navToggle) { navToggle.setAttribute("aria-expanded", "false"); navToggle.innerHTML = ICONS.menu; }
+    }
+    if (open) setTimeout(() => input.focus(), 150);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (open && !panel.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+      open = false;
+      closeSearch();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && open) { open = false; closeSearch(); }
+  });
+
+  renderResults("");
+  input.addEventListener("input", () => renderResults(input.value));
 }
 
 document.addEventListener("DOMContentLoaded", () => {

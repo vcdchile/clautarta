@@ -4,7 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Puntos de venta — Clautartas</title>
-<meta name="description" content="Dónde encontrar y comprar los productos y cursos de Clautartas.">
+<meta name="description" content="Dónde encontrar y comprar los productos y cursos de Clautartas: ferias, despacho a domicilio y tienda online por ciudad.">
+<meta name="keywords" content="puntos de venta, ferias, repostería, pastelería, panadería, tartas, postres, Chile">
+<link rel="canonical" href="https://clautartas.com/puntos-venta.html">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Puntos de venta — Clautartas">
+<meta property="og:description" content="Dónde encontrar y comprar los productos y cursos de Clautartas.">
+<meta property="og:url" content="https://clautartas.com/puntos-venta.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;0,700;1,600&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
@@ -21,6 +27,10 @@
   </section>
 
   <section class="section">
+    <div class="pv-search-wrap">
+      <span id="pvSearchIcon"></span>
+      <input type="search" id="pvSearch" placeholder="Buscar por nombre, ciudad o contacto...">
+    </div>
     <div class="pv-list" id="pvList"></div>
   </section>
 
@@ -40,8 +50,12 @@
 <script src="js/render.js"></script>
 <script>
   document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("pvSearchIcon").innerHTML = ICONS.search;
     renderPuntosVenta();
     document.getElementById("ctaWsp").href = waLink();
+
+    const pvSearch = document.getElementById("pvSearch");
+    pvSearch.addEventListener("input", () => renderPuntosVenta(pvSearch.value));
   });
 </script>
 </body>

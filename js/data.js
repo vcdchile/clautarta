@@ -19,8 +19,12 @@ const SITE = {
   mensajeWspGenerico: "Hola Clau! Quiero más información sobre tus cursos 🍰",
   instagram: "https://instagram.com/clautartas",
   tiktokPerfil: "https://tiktok.com/@clautartas",
-  email: "contacto@clautartas.com",
+  email: "clautartas@gmail.com",
   facebook: "https://facebook.com/clautartas",
+  telegramCanal: "https://t.me/+RVUXrFt7kidjZmVh",
+  // Tasa de cambio referencial CLP -> USD para mostrar el precio en dólares.
+  // Actualízala cuando quieras (ej: revisa el valor del dólar y cámbialo aquí).
+  usdRate: 950,
 };
 
 /* Imágenes: reemplaza estas URLs de ejemplo por fotos reales tuyas.
@@ -33,7 +37,7 @@ const CURSOS = [
     badgeNuevo: true,
     titulo: "Tartas para Emprender — Semifrío sin Horno",
     subtitulo: "El curso insignia: aprende a vender tartas desde tu casa",
-    imagen: "https://placehold.co/900x700/F3B8C4/4A2E28?text=Tartas+Semifr%C3%ADo",
+    imagen: "img/semi-frio1.jpg",
     descripcionCorta: "Aprende a hacer tartas semifrías sin horno, listas para vender, paso a paso.",
     descripcionLarga: "Un curso pensado para quienes quieren emprender vendiendo tartas desde casa, sin necesidad de horno ni equipos caros. Vas a aprender las bases de las tartas semifrías, cómo armarlas, decorarlas y calcular tus costos para que tu negocio sea rentable desde el primer día.",
     temas: [
@@ -44,17 +48,17 @@ const CURSOS = [
       "Cálculo de costos y precio de venta",
     ],
     fotos: [
-      "https://placehold.co/500x500/F3B8C4/4A2E28?text=Foto+1",
-      "https://placehold.co/500x500/FBE1E6/4A2E28?text=Foto+2",
-      "https://placehold.co/500x500/D9A441/4A2E28?text=Foto+3",
+      "img/chees500x500.webp",
+      "img/maracu.webp",
+      "img/maracuya500x500x1.webp",
+      "img/oreo500x500.jpg",
     ],
     tiktoks: [
-      "https://www.tiktok.com/@clautartas/video/0000000000000000001",
-      "https://www.tiktok.com/@clautartas/video/0000000000000000002",
+      "https://www.tiktok.com/@clautartas/video/7523843164252228869",
+      "https://www.tiktok.com/@clautartas/video/7642553756269202706",
     ],
-    precio: "$29.990",
+    precio: "$40.000",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: "#",
@@ -65,13 +69,13 @@ const CURSOS = [
   },
   {
     id: 2,
-    slug: "cheesecakes-cremosos-sin-horno",
-    categoria: "Sin horno",
+    slug: "Horneado",
+    categoria: "Destacado",
     badgeNuevo: false,
-    titulo: "Cheesecakes Cremosos sin Horno",
-    subtitulo: "Textura perfecta, sin rajaduras, sin horno",
-    imagen: "https://placehold.co/900x700/FBE1E6/4A2E28?text=Cheesecakes",
-    descripcionCorta: "La receta y técnica exacta para lograr un cheesecake cremoso, firme y sin fallas.",
+    titulo: "Curso Horneado",
+    subtitulo: "Textura perfecta, larga duración, ideal para emprender",
+    imagen: "img/horneado.webp",
+    descripcionCorta: "La receta y técnica exacta para lograr kuchen y Pies perfectos y sin fallas.",
     descripcionLarga: "Vas a dominar el cheesecake sin horno perfecto: base crocante, relleno cremoso que corta bien y coberturas que enamoran a simple vista. Ideal para vender por porciones o tartas enteras.",
     temas: [
       "Base y proporciones para que no se desarme",
@@ -86,9 +90,8 @@ const CURSOS = [
     tiktoks: [
       "https://www.tiktok.com/@clautartas/video/0000000000000000003",
     ],
-    precio: "$24.990",
+    precio: "$40.000",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: "#",
@@ -121,7 +124,6 @@ const CURSOS = [
     tiktoks: [],
     precio: "$24.990",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: "#",
@@ -155,7 +157,6 @@ const CURSOS = [
     ],
     precio: "$19.990",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: null,
@@ -187,7 +188,6 @@ const CURSOS = [
     tiktoks: [],
     precio: "$27.990",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: "#",
@@ -221,7 +221,6 @@ const CURSOS = [
     ],
     precio: "$17.990",
     precioNota: "Pago único • incluye planilla descargable",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: "#",
@@ -256,7 +255,6 @@ const CURSOS = [
     ],
     precio: "$19.990",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: null,
@@ -288,7 +286,6 @@ const CURSOS = [
     tiktoks: [],
     precio: "$22.990",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: "#",
@@ -323,7 +320,6 @@ const CURSOS = [
     ],
     precio: "$21.990",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: null,
@@ -355,7 +351,6 @@ const CURSOS = [
     tiktoks: [],
     precio: "$17.990",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: "#",
@@ -390,7 +385,6 @@ const CURSOS = [
     ],
     precio: "$24.990",
     precioNota: "Pago único • acceso de por vida",
-    linkCompra: "https://hotmart.com/es/marketplace",
     recursos: {
       pdf: "#",
       planilla: "#",
@@ -401,42 +395,59 @@ const CURSOS = [
   },
 ];
 
-/* Testimonios / resultados de alumnas — edita o agrega libremente */
+/* Testimonios / resultados de alumnas — edita o agrega libremente.
+   Cada testimonio puede mostrar UNA FOTO o UN VIDEO DE TIKTOK (no ambos):
+   - Si agregas el campo "video" con el link del TikTok, se muestra el video.
+   - Si NO agregas "video" (o lo dejas como null), se muestra la "foto".
+   Ejemplo con video:
+   {
+     nombre: "Javiera R.",
+     rol: "Alumna — Curso de Costos y Precios",
+     video: "https://www.tiktok.com/@clautartas/video/0000000000000000010",
+     foto: null,
+     quote: "...",
+   } */
 const TESTIMONIOS = [
   {
     nombre: "Javiera R.",
     rol: "Alumna — Curso de Costos y Precios",
     foto: "https://placehold.co/500x400/F3B8C4/4A2E28?text=Javiera",
+    video: null,
     quote: "Antes vendía casi sin ganar nada. Con la planilla de costos por fin supe cuánto cobrar y mi negocio empezó a dejar plata de verdad.",
   },
   {
     nombre: "Constanza M.",
     rol: "Alumna — Tartas para Emprender",
     foto: "https://placehold.co/500x400/D9A441/4A2E28?text=Constanza",
+    video: null,
     quote: "Empecé sin saber nada de pastelería y en un mes ya estaba vendiendo tartas los fines de semana. Las clases son súper claras.",
   },
   {
     nombre: "Fernanda P.",
     rol: "Alumna — Decoración con Manga",
     foto: "https://placehold.co/500x400/FBE1E6/4A2E28?text=Fernanda",
+    video: null,
     quote: "Mis tartas se veían caseras y ahora se ven de pastelería. Mis clientas lo notaron altiro y empecé a subir precios.",
   },
   {
     nombre: "Daniela S.",
     rol: "Alumna — Postres para Redes Sociales",
     foto: "https://placehold.co/500x400/F3B8C4/4A2E28?text=Daniela",
+    video: null,
     quote: "Aprendí a grabar con el celular no más y mis videos empezaron a tener más vistas. De ahí me llegaron mis primeros pedidos grandes.",
   },
   {
     nombre: "Valentina T.",
     rol: "Alumna — Tartas de Cumpleaños",
     foto: "https://placehold.co/500x400/D9A441/4A2E28?text=Valentina",
+    video: null,
     quote: "Aprendí a cotizar bien las tartas personalizadas. Ahora las cobro como corresponde y no me quedo trabajando gratis.",
   },
   {
     nombre: "Camila G.",
     rol: "Alumna — Cheesecakes sin Horno",
     foto: "https://placehold.co/500x400/FBE1E6/4A2E28?text=Camila",
+    video: null,
     quote: "Se me rajaban todos los cheesecakes hasta que hice este curso. Ahora me salen perfectos todas las veces.",
   },
 ];
@@ -448,22 +459,34 @@ const STATS = [
   { num: "+300", label: "Emprendimientos iniciados" },
 ];
 
-/* Puntos de venta — físicos o de referencia. Edita/agrega los que necesites */
+/* Puntos de venta — físicos o de referencia.
+   Edita/agrega los que necesites. Campos:
+   - nombre: nombre del punto de venta o servicio
+   - ciudad: ciudad donde se ubica (o "Online" si aplica)
+   - contacto: teléfono, WhatsApp o usuario de contacto
+   - link (opcional): si tienes un link (mapa, WhatsApp, etc.)
+   - linkTexto (opcional): texto del botón del link */
 const PUNTOS_VENTA = [
   {
     nombre: "Feria Costanera — Stand Clautartas",
+    ciudad: "Curicó",
+    contacto: "+56 9 4410 8100",
     detalle: "Sábados y domingos, 10:00 a 18:00 hrs.",
     link: "#",
     linkTexto: "Ver ubicación",
   },
   {
     nombre: "Despacho a domicilio Región Metropolitana",
+    ciudad: "Santiago",
+    contacto: "+56 9 4410 8100",
     detalle: "Pedidos con 48 hrs de anticipación.",
     link: "#",
     linkTexto: "Coordinar por WhatsApp",
   },
   {
     nombre: "Tienda online — Cursos digitales",
+    ciudad: "Online (todo Chile)",
+    contacto: "clautartas@gmail.com",
     detalle: "Acceso inmediato desde cualquier parte de Chile.",
     link: "#",
     linkTexto: "Ver cursos",
