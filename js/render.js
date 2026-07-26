@@ -22,7 +22,14 @@ function resourceChip(tipo, url) {
 
 function resourceRow(tipo, url) {
   if (!url) return "";
-  const labels = { pdf: "Descargar PDF", planilla: "Planilla de costo", wsp: "Unirme al grupo WSP", telegram: "Unirme a Telegram", videos: "Ver videos paso a paso" };
+  const labels = { pdf: "Documentos PDF", planilla: "Planilla de costo", wsp: "Grupo WSP", telegram: "Grupo Telegram", videos: "videos paso a paso" };
+  if (url === "#") {
+    return `
+      <div class="resource-row resource-row-static">
+        <span class="ic">${RESOURCE_ICONS[tipo]}</span>
+        <span>${labels[tipo]}</span>
+      </div>`;
+  } 
   return `
     <a class="resource-row" href="${url}" target="_blank" rel="noopener">
       <span class="ic">${RESOURCE_ICONS[tipo]}</span>
@@ -87,8 +94,8 @@ function courseCardHTML(c) {
         <h3>${c.titulo}</h3>
         <p class="course-desc">${c.descripcionCorta}</p>
         <div class="course-price">
-          <span class="clp">${c.precio}</span>
-          <span class="usd">${clpToUsd(c.precio)}</span>
+          ${c.precioOferta ? `<span class="clp-tachado">${c.precio}</span><span class="clp-oferta">${c.precioOferta}</span>` : `<span class="clp">${c.precio}</span>`}
+          <span class="usd">${clpToUsd(c.precioOferta || c.precio)}</span>
         </div>
         ${chips ? `<div class="course-resources"><span class="resources-label">Incluye:</span>${chips}</div>` : ""}
         <a class="course-cta" href="curso.html?id=${c.id}">Ver curso ${ICONS.arrowRight}</a>
@@ -250,10 +257,10 @@ function renderCursoDetalle() {
 
       <aside class="curso-sidebar">
         <div class="price-card">
-          <div class="precio">${curso.precio}</div>
-          <div class="precio-usd">${clpToUsd(curso.precio)}</div>
+          ${curso.precioOferta ? `<div class="precio-tachado">${curso.precio}</div><div class="precio">${curso.precioOferta}</div>` : `<div class="precio">${curso.precio}</div>`}
+          <div class="precio-usd">${clpToUsd(curso.precioOferta || curso.precio)}</div>
           <div class="precio-note">${curso.precioNota}</div>
-          <a class="btn btn-primary" href="${waLink(`Hola Clau! Quiero comprar el curso "${curso.titulo}" (${curso.precio}). ¿Cómo sigo?`)}" target="_blank" rel="noopener">Comprar por WhatsApp ${ICONS.arrowRight}</a>
+          <a class="btn btn-primary" href="${waLink(`Hola Clau! Quiero comprar el curso "${curso.titulo}" (${curso.precioOferta || curso.precio}). ¿Cómo sigo?`)}" target="_blank" rel="noopener">Comprar por WhatsApp ${ICONS.arrowRight}</a>
           <a class="btn btn-outline" href="${waLink(`Hola! Tengo una consulta sobre el curso "${curso.titulo}"`)}" target="_blank" rel="noopener">Consultar antes de comprar</a>
         </div>
 

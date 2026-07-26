@@ -907,3 +907,34 @@ a:focus-visible, button:focus-visible {
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+/* ============================================================
+   PRECIO DE OFERTA — pega este bloque al FINAL de tu css/style.css
+   (no reemplaza nada, solo agrega estas clases nuevas)
+   ============================================================ */
+
+/* Precio tachado en la página de detalle del curso (sidebar) */
+.precio-tachado {
+  text-decoration: line-through;
+  color: var(--text-secondary, #999);
+  font-size: 1rem;
+  font-weight: 400;
+  margin-bottom: 2px;
+}
+
+/* Precio tachado en las tarjetas del listado (index.html) */
+.clp-tachado {
+  text-decoration: line-through;
+  color: #999;
+  font-size: 0.9rem;
+  margin-right: 6px;
+}
+
+/* Precio de oferta destacado en las tarjetas del listado */
+.clp-oferta {
+  color: var(--berry, #7c2d42);
+  font-weight: 800;
+}
+.resource-row-static {
+  cursor: default;
+  pointer-events: none;
+}

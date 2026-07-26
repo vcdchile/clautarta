@@ -11,6 +11,13 @@
    de CURSOS (desde { hasta },) pégalo al final, cambia el "id"
    por uno nuevo (que no se repita) y reemplaza los datos.
    El sitio se actualiza solo, no hay que tocar el HTML.
+
+   PRECIOS DE OFERTA:
+   Para poner un curso en oferta, agrega el campo "precioOferta"
+   con el precio rebajado (ej: precioOferta: "$25.000"). El precio
+   normal ("precio") se mostrará tachado arriba y la oferta se
+   verá destacada. Si un curso NO tiene oferta, simplemente no
+   agregues ese campo (o déjalo como null).
    ============================================================ */
 
 const SITE = {
@@ -24,7 +31,7 @@ const SITE = {
   telegramCanal: "https://t.me/+RVUXrFt7kidjZmVh",
   // Tasa de cambio referencial CLP -> USD para mostrar el precio en dólares.
   // Actualízala cuando quieras (ej: revisa el valor del dólar y cámbialo aquí).
-  usdRate: 950,
+  usdRate: 800,
 };
 
 /* Imágenes: reemplaza estas URLs de ejemplo por fotos reales tuyas.
@@ -41,29 +48,35 @@ const CURSOS = [
     descripcionCorta: "Aprende a hacer tartas semifrías sin horno, listas para vender, paso a paso.",
     descripcionLarga: "Un curso pensado para quienes quieren emprender vendiendo tartas desde casa, sin necesidad de horno ni equipos caros. Vas a aprender las bases de las tartas semifrías, cómo armarlas, decorarlas y calcular tus costos para que tu negocio sea rentable desde el primer día.",
     temas: [
-      "Bases para tartas semifrías: masa, mousse y relleno",
-      "Técnicas de armado y congelado",
-      "Decoración simple y vistosa para redes sociales",
-      "Cómo fotografiar y presentar tu producto",
-      "Cálculo de costos y precio de venta",
+      "Más de 14 recetas Premium" ,
+	  "Bases para tartas semifrías: masa Quety",
+      "Preparación de rellenos Premium de bajo costo y larga duración",
+	  "Decoración económica y llamativa",
+	  "Diferentes tipos de coberturas y ganach",
+      "Técnicas de Porcionado y refrigeración",
+      "Opciones de venta en diferentes presentaciones",
+      "Cálculo de costos y precio de venta al detalle y x mayor",
     ],
     fotos: [
       "img/chees500x500.webp",
       "img/maracu.webp",
       "img/maracuya500x500x1.webp",
       "img/oreo500x500.jpg",
+	  "img/semi-frio500x5004.webp",
+	  "img/semi-frio500x5005.webp",
     ],
     tiktoks: [
       "https://www.tiktok.com/@clautartas/video/7523843164252228869",
       "https://www.tiktok.com/@clautartas/video/7642553756269202706",
     ],
-    precio: "$40.000",
-    precioNota: "Pago único • acceso de por vida",
+    precio: "$50.000",
+    precioOferta: "$40.000",
+    precioNota: "Pago único • acceso de por vida - Full",
     recursos: {
       pdf: "#",
       planilla: "#",
       wsp: "#",
-      telegram: "#",
+      telegram: null,
       videos: "#",
     },
   },
@@ -76,22 +89,34 @@ const CURSOS = [
     subtitulo: "Textura perfecta, larga duración, ideal para emprender",
     imagen: "img/horneado.webp",
     descripcionCorta: "La receta y técnica exacta para lograr kuchen y Pies perfectos y sin fallas.",
-    descripcionLarga: "Vas a dominar el cheesecake sin horno perfecto: base crocante, relleno cremoso que corta bien y coberturas que enamoran a simple vista. Ideal para vender por porciones o tartas enteras.",
+    descripcionLarga: "Vas a dominar la técnica del Horneado, relleno cremoso que corta bien y coberturas que enamoran a simple vista. Ideal para vender por porciones o tartas enteras.",
     temas: [
-      "Base y proporciones para que no se desarme",
-      "Relleno cremoso a prueba de errores",
-      "Coberturas: frutos rojos, caramelo, chocolate",
-      "Conservación y transporte para venta",
+      "Masa Base ( quety)",
+	  "Más de 14 recetas Premium ",
+      "Rellenos cremoso a prueba de errores de fácil Preparación",
+      "Diferentes tipos de coberturas y ganach",
+      "Diferentes tipos de presentaciones para la venta",
+      "Armado de Mix de sabores",
+	  "Técnicas de Porcionado y refrigeración",
+      "Diferentes tipos de coberturas y ganach",
+      "Calcular costo al detalle y por mayor",
     ],
     fotos: [
-      "https://placehold.co/500x500/FBE1E6/4A2E28?text=Foto+1",
-      "https://placehold.co/500x500/F3B8C4/4A2E28?text=Foto+2",
+	  "img/horn1.jpg",
+	  "img/horn2.jpg",
+	  "img/horn3.webp",
+	  "img/horn5.jpg",
+	  "img/horn4.webp",
+	  "img/horn6.webp",
+    
     ],
     tiktoks: [
-      "https://www.tiktok.com/@clautartas/video/0000000000000000003",
+      "https://www.tiktok.com/@clautartas/video/7521602746387156230",
+	  "https://www.tiktok.com/@clautartas/video/7642553756269202706",
     ],
-    precio: "$40.000",
-    precioNota: "Pago único • acceso de por vida",
+    precio: "$50.000",
+    precioOferta: "$40.000",
+    precioNota: "Pago único • acceso de por vida - Full",
     recursos: {
       pdf: "#",
       planilla: "#",
@@ -123,6 +148,7 @@ const CURSOS = [
     ],
     tiktoks: [],
     precio: "$24.990",
+    precioOferta: "$16.990",
     precioNota: "Pago único • acceso de por vida",
     recursos: {
       pdf: "#",
@@ -156,6 +182,7 @@ const CURSOS = [
       "https://www.tiktok.com/@clautartas/video/0000000000000000004",
     ],
     precio: "$19.990",
+    precioOferta: "$13.990",
     precioNota: "Pago único • acceso de por vida",
     recursos: {
       pdf: "#",
@@ -187,6 +214,7 @@ const CURSOS = [
     ],
     tiktoks: [],
     precio: "$27.990",
+    precioOferta: "$18.990",
     precioNota: "Pago único • acceso de por vida",
     recursos: {
       pdf: "#",
@@ -220,6 +248,7 @@ const CURSOS = [
       "https://www.tiktok.com/@clautartas/video/0000000000000000005",
     ],
     precio: "$17.990",
+    precioOferta: "$12.990",
     precioNota: "Pago único • incluye planilla descargable",
     recursos: {
       pdf: "#",
@@ -254,6 +283,7 @@ const CURSOS = [
       "https://www.tiktok.com/@clautartas/video/0000000000000000006",
     ],
     precio: "$19.990",
+    precioOferta: "$13.990",
     precioNota: "Pago único • acceso de por vida",
     recursos: {
       pdf: "#",
@@ -285,6 +315,7 @@ const CURSOS = [
     ],
     tiktoks: [],
     precio: "$22.990",
+    precioOferta: "$15.990",
     precioNota: "Pago único • acceso de por vida",
     recursos: {
       pdf: "#",
@@ -319,6 +350,7 @@ const CURSOS = [
       "https://www.tiktok.com/@clautartas/video/0000000000000000008",
     ],
     precio: "$21.990",
+    precioOferta: "$14.990",
     precioNota: "Pago único • acceso de por vida",
     recursos: {
       pdf: "#",
@@ -350,6 +382,7 @@ const CURSOS = [
     ],
     tiktoks: [],
     precio: "$17.990",
+    precioOferta: "$12.990",
     precioNota: "Pago único • acceso de por vida",
     recursos: {
       pdf: "#",
@@ -384,6 +417,7 @@ const CURSOS = [
       "https://www.tiktok.com/@clautartas/video/0000000000000000009",
     ],
     precio: "$24.990",
+    precioOferta: "$16.990",
     precioNota: "Pago único • acceso de por vida",
     recursos: {
       pdf: "#",
