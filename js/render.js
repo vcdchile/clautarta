@@ -212,7 +212,7 @@ function renderCursoDetalle() {
   const galeriaHTML = curso.fotos.length ? `
     <h2>Fotos del curso</h2>
     <div class="gallery-grid">
-      ${curso.fotos.map(f => `<img src="${f}" alt="${curso.titulo}" loading="lazy">`).join("")}
+      ${curso.fotos.map(f => `<img src="${f}" alt="${curso.titulo}" loading="lazy" class="lightbox-img">`).join("")}
     </div>
   ` : "";
 
@@ -279,6 +279,49 @@ function renderCursoDetalle() {
 
   /* Related courses row */
   renderRelated(curso);
+
+  /* Enable click-to-zoom lightbox on gallery photos */
+  initLightbox(wrap);
+}
+
+/* ---------- LIGHTBOX (zoom de fotos, funciona igual en PC y celular) ---------- */
+function getLightbox() {
+  let overlay = document.getElementById("lightboxOverlay");
+  if (overlay) return overlay;
+
+  overlay = document.createElement("div");
+  overlay.id = "lightboxOverlay";
+  overlay.className = "lightbox-overlay";
+  overlay.innerHTML = `
+    <button class="lightbox-close" aria-label="Cerrar">&times;</button>
+    <img class="lightbox-img-full" src="" alt="">
+  `;
+  document.body.appendChild(overlay);
+
+  const close = () => overlay.classList.remove("active");
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay || e.target.classList.contains("lightbox-close")) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+
+  return overlay;
+}
+
+function openLightbox(src, alt) {
+  const overlay = getLightbox();
+  const img = overlay.querySelector(".lightbox-img-full");
+  img.src = src;
+  img.alt = alt || "";
+  overlay.classList.add("active");
+}
+
+function initLightbox(scope) {
+  const root = scope || document;
+  root.querySelectorAll(".lightbox-img").forEach(img => {
+    img.addEventListener("click", () => openLightbox(img.src, img.alt));
+  });
 }
 
 function renderRelated(curso) {
