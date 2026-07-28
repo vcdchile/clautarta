@@ -117,13 +117,14 @@ function renderTestimonials() {
 
   const mediaHTML = (t) => {
     if (t.video) {
-      const videoId = (t.video.split("/video/")[1] || "").split("?")[0];
+      const hasMini = !!t.miniatura;
       return `
-        <div class="testi-video">
-          <blockquote class="tiktok-embed" cite="${t.video}" data-video-id="${videoId}" style="max-width:100%;min-width:auto;">
-            <section><a target="_blank" rel="noopener" href="${t.video}">Ver video en TikTok</a></section>
-          </blockquote>
-        </div>`;
+        <button type="button" class="testi-video-thumb" data-video="${t.video}"
+          aria-label="Reproducir video de ${t.nombre}"
+          style="${hasMini ? `background-image:url('${t.miniatura}')` : ""}">
+          ${!hasMini ? `<span class="testi-video-fallback">${ICONS.tiktok}<span>Ver video</span></span>` : ""}
+          <span class="play-badge"><span>${ICONS.play}</span></span>
+        </button>`;
     }
     return `<img src="${t.foto}" alt="${t.nombre}" loading="lazy">`;
   };
@@ -137,13 +138,63 @@ function renderTestimonials() {
     </div>
   `).join("");
 
-  /* Carga el script de embed de TikTok solo si hay al menos un testimonio en video */
-  if (TESTIMONIOS.some(t => t.video)) {
-    const s = document.createElement("script");
-    s.src = "https://www.tiktok.com/embed.js";
-    s.async = true;
-    document.body.appendChild(s);
-  }
+  /* Nada de TikTok se carga aquí: el embed real solo se pide
+     cuando la persona hace clic en una miniatura (ver openTikTokModal) */
+  el.querySelectorAll(".testi-video-thumb").forEach(btn => {
+    btn.addEventListener("click", () => openTikTokModal(btn.dataset.video));
+  });
+}
+
+/* ---------- MODAL DE VIDEO TIKTOK (lazy load real: solo carga al hacer clic) ---------- */
+function getVideoModal() {
+  let overlay = document.getElementById("videoModalOverlay");
+  if (overlay) return overlay;
+
+  overlay = document.createElement("div");
+  overlay.id = "videoModalOverlay";
+  overlay.className = "video-modal-overlay";
+  overlay.innerHTML = `
+    <div class="video-modal-card">
+      <button class="video-modal-close" aria-label="Cerrar video">&times;</button>
+      <div class="video-modal-body"></div>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+
+  const close = () => {
+    overlay.classList.remove("active");
+    overlay.querySelector(".video-modal-body").innerHTML = "";
+  };
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay || e.target.classList.contains("video-modal-close")) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") close();
+  });
+
+  return overlay;
+}
+
+function openTikTokModal(url) {
+  const overlay = getVideoModal();
+  const body = overlay.querySelector(".video-modal-body");
+  const videoId = (url.split("/video/")[1] || "").split("?")[0];
+
+  body.innerHTML = `
+    <blockquote class="tiktok-embed" cite="${url}" data-video-id="${videoId}" style="max-width:340px;min-width:280px;margin:0 auto;">
+      <section><a target="_blank" rel="noopener" href="${url}">Ver video en TikTok</a></section>
+    </blockquote>
+  `;
+  overlay.classList.add("active");
+
+  /* Recarga el script de embed cada vez para que procese el video nuevo */
+  const old = document.getElementById("tiktokEmbedScript");
+  if (old) old.remove();
+  const s = document.createElement("script");
+  s.id = "tiktokEmbedScript";
+  s.src = "https://www.tiktok.com/embed.js";
+  s.async = true;
+  document.body.appendChild(s);
 }
 
 function renderStats() {
@@ -331,4 +382,64 @@ function renderRelated(curso) {
   el.innerHTML = others.map(c => `
     <a class="course-cta" style="background:#fff;color:var(--berry);border:2px solid var(--pink-frost);" href="curso.html?id=${c.id}">${c.titulo}</a>
   `).join("");
+}
+
+/* ---------- POPUP DE PROMOCIONES (index.html) ---------- */
+function resolvePromoLink(link) {
+  if (!link) return "#";
+  if (link.startsWith("WSP:")) return waLink(link.slice(4).trim());
+  return link;
+}
+
+function renderPromoPopup() {
+  if (typeof PROMOS === "undefined" || !PROMOS.length) return;
+  if (sessionStorage.getItem("clautartasPromoShown")) return;
+
+  const overlay = document.createElement("div");
+  overlay.className = "promo-overlay";
+  overlay.innerHTML = `
+    <div class="promo-card">
+      <button class="promo-close" aria-label="Cerrar promoción">&times;</button>
+      <div class="promo-track">
+        ${PROMOS.map((p, i) => {
+          const href = resolvePromoLink(p.link);
+          const external = /^https?:\/\//.test(href);
+          return `
+            <a class="promo-slide ${i === 0 ? "active" : ""}" data-index="${i}" href="${href}" ${external ? 'target="_blank" rel="noopener"' : ""}>
+              <img src="${p.imagen}" alt="${p.alt || "Promoción Clautartas"}">
+            </a>`;
+        }).join("")}
+      </div>
+      ${PROMOS.length > 1 ? `
+        <div class="promo-dots">
+          ${PROMOS.map((_, i) => `<button data-index="${i}" class="${i === 0 ? "active" : ""}" aria-label="Ver promoción ${i + 1}"></button>`).join("")}
+        </div>
+      ` : ""}
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add("active"));
+
+  const close = () => {
+    overlay.classList.remove("active");
+    sessionStorage.setItem("clautartasPromoShown", "1");
+    setTimeout(() => overlay.remove(), 250);
+  };
+
+  overlay.querySelector(".promo-close").addEventListener("click", close);
+  overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
+  document.addEventListener("keydown", function escClose(e) {
+    if (e.key === "Escape") { close(); document.removeEventListener("keydown", escClose); }
+  });
+
+  if (PROMOS.length > 1) {
+    const slideEls = overlay.querySelectorAll(".promo-slide");
+    const dotEls = overlay.querySelectorAll(".promo-dots button");
+    dotEls.forEach(d => d.addEventListener("click", (e) => {
+      e.preventDefault();
+      const idx = Number(d.dataset.index);
+      slideEls.forEach((s, i) => s.classList.toggle("active", i === idx));
+      dotEls.forEach((dd, i) => dd.classList.toggle("active", i === idx));
+    }));
+  }
 }

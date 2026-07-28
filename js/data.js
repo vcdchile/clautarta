@@ -430,31 +430,37 @@ const CURSOS = [
   },
   {
     id: 10,
-    slug: "kuchen-y-tartas-alemanas",
-    categoria: "Tradicionales",
+    slug: "Masas Para Tartas",
+    categoria: "masas",
     badgeNuevo: false,
-    titulo: "Kuchen y Tartas Alemanas",
-    subtitulo: "Clásicos de siempre, con técnica profesional",
-    imagen: "https://placehold.co/900x700/F3B8C4/4A2E28?text=Kuchen",
-    descripcionCorta: "Los kuchen clásicos chilenos con receta afinada para vender: de manzana, nuez y más.",
-    descripcionLarga: "Los sabores de siempre, pero con receta profesional: masa que no se pone dura, relleno en su punto justo y presentación que se ve casera pero cuidada. Perfecto para cafeterías y ferias.",
+    titulo: "Masas para Tartas",
+    subtitulo: "10 Recetas perfectas para tartas frias y horneadas",
+    imagen: "img/masa.jpg",
+    descripcionCorta: "10 Recetas perfectas para tartas frias y horneadas paso a paso.",
+    descripcionLarga: "10 Recetas perfectas para tartas frias y horneadas paso a paso, testeadas y modificadas por nosotros. Siempre pensando en emprender con este producto,.",
     temas: [
-      "Masa base para kuchen",
-      "Kuchen de manzana, nuez y frutos secos",
-      "Conservación y venta por porciones",
-      "Adaptación de recetas familiares a escala de venta",
+      "Varias opciones de Masa base para kuchen",
+      "Varias opciones de Masa base para semi frio",
+      "Varias opciones de Masa base para congelar",
+      "Masa Quety Masa - Saludable - Masa Avena - Masa Rapida - masa neutra - masa Brisee - Masa Frola - Masa Murbe - Masa Sucree",
+	  "PDF explicativo paso a paso",
+      "soporte por grupo de wsp",
     ],
     fotos: [
-      "https://placehold.co/500x500/F3B8C4/4A2E28?text=Foto+1",
-      "https://placehold.co/500x500/D9A441/4A2E28?text=Foto+2",
+	  "img/ma1.jpg",
+	  "img/ma2.jpg",
+	  "img/ma3.jpg",
+	  "img/ma4.jpg",
+	  "img/ma5.jpg",
+	  "img/ma6.jpg",
     ],
     tiktoks: [],
-    precio: "$17.990",
-    precioOferta: "$12.990",
+    precio: "$15.000",
+    precioOferta: "$10.000",
     precioNota: "Pago único • acceso de por vida",
     recursos: {
       pdf: "#",
-      planilla: "#",
+      planilla: null,
       wsp: "#",
       telegram: null,
       videos: null,
@@ -497,15 +503,47 @@ const CURSOS = [
   },
 ];
 
+/* Promociones — se muestran en una ventana emergente (popup) al entrar
+   a la página principal, una sola vez por visita.
+
+   Cada promo necesita:
+   - imagen: la foto/banner de la promo (súbela a /img)
+   - alt: texto alternativo corto (para SEO y accesibilidad)
+   - link: a dónde va la persona al hacer clic en la imagen. Dos opciones:
+       a) Directo a WhatsApp con mensaje pre-armado:
+          link: "WSP:Hola Clau! Vi la promo y quiero más info 🍰"
+          (tiene que empezar con "WSP:" seguido del mensaje)
+       b) A una página con el detalle de la promo:
+          link: "promo-verano.html"  (o cualquier URL)
+
+   Si el array está vacío [], no se muestra ningún popup.
+   Si agregas más de una promo, el popup las muestra con puntos
+   de navegación (igual que el carrusel del inicio). */
+const PROMOS = [
+  {
+   imagen: "img/promo.jpg",
+    alt: "Ofertas cyber week",
+   link: "WSP:Hola Clau! Vi la promo de cyber week y quiero más información",
+  },
+];
+
 /* Testimonios / resultados de alumnas — edita o agrega libremente.
    Cada testimonio puede mostrar UNA FOTO o UN VIDEO DE TIKTOK (no ambos):
-   - Si agregas el campo "video" con el link del TikTok, se muestra el video.
+   - Si agregas el campo "video" con el link del TikTok, se muestra una
+     MINIATURA clickeable (el video NO se carga hasta que la persona hace
+     clic — así la página no se llena de reproductores pesados).
    - Si NO agregas "video" (o lo dejas como null), se muestra la "foto".
+
+   Para los videos, agrega también "miniatura" con una imagen de portada
+   (puede ser un pantallazo del video). Si no la agregas, se muestra un
+   ícono de TikTok genérico como portada mientras subes las miniaturas reales.
+
    Ejemplo con video:
    {
      nombre: "Javiera R.",
      rol: "Alumna — Curso de Costos y Precios",
      video: "https://www.tiktok.com/@clautartas/video/0000000000000000010",
+     miniatura: "img/testi-javiera-portada.jpg", // opcional
      foto: null,
      quote: "...",
    } */
