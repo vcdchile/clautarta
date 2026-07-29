@@ -181,21 +181,21 @@ function openTikTokModal(url) {
   const body = overlay.querySelector(".video-modal-body");
   const videoId = (url.split("/video/")[1] || "").split("?")[0];
 
+  /* Iframe directo: no depende del script externo de TikTok (embed.js),
+     que en algunos navegadores móviles puede manipular el DOM de forma
+     impredecible. El iframe queda contenido siempre dentro del modal. */
   body.innerHTML = `
-    <blockquote class="tiktok-embed" cite="${url}" data-video-id="${videoId}" style="max-width:340px;min-width:280px;margin:0 auto;">
-      <section><a target="_blank" rel="noopener" href="${url}">Ver video en TikTok</a></section>
-    </blockquote>
+    <div class="tiktok-iframe-wrap">
+      <iframe
+        src="https://www.tiktok.com/embed/v2/${videoId}"
+        allow="encrypted-media; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+        title="Video de TikTok"
+      ></iframe>
+    </div>
   `;
   overlay.classList.add("active");
-
-  /* Recarga el script de embed cada vez para que procese el video nuevo */
-  const old = document.getElementById("tiktokEmbedScript");
-  if (old) old.remove();
-  const s = document.createElement("script");
-  s.id = "tiktokEmbedScript";
-  s.src = "https://www.tiktok.com/embed.js";
-  s.async = true;
-  document.body.appendChild(s);
 }
 
 function renderStats() {
@@ -272,9 +272,15 @@ function renderCursoDetalle() {
     <h2>Videos de TikTok</h2>
     <div class="tiktok-grid">
       ${curso.tiktoks.map(url => `
-        <blockquote class="tiktok-embed" cite="${url}" data-video-id="${(url.split("/video/")[1] || "").split("?")[0]}" style="max-width:340px;min-width:240px;margin:0;">
-          <section><a target="_blank" rel="noopener" href="${url}">Ver video en TikTok</a></section>
-        </blockquote>
+        <div class="tiktok-iframe-wrap">
+          <iframe
+            src="https://www.tiktok.com/embed/v2/${(url.split("/video/")[1] || "").split("?")[0]}"
+            allow="encrypted-media; picture-in-picture"
+            allowfullscreen
+            loading="lazy"
+            title="Video de TikTok"
+          ></iframe>
+        </div>
       `).join("")}
     </div>
   ` : "";
@@ -320,14 +326,6 @@ function renderCursoDetalle() {
       </aside>
     </div>
   `;
-
-  /* Load TikTok embed script only if this course has tiktoks */
-  if (curso.tiktoks.length) {
-    const s = document.createElement("script");
-    s.src = "https://www.tiktok.com/embed.js";
-    s.async = true;
-    document.body.appendChild(s);
-  }
 
   /* Related courses row */
   renderRelated(curso);
