@@ -573,11 +573,11 @@ const TESTIMONIOS = [
     quote: "Hilda <br>Wsp +56987958657<br>Viña" ,
   },
   {
-    nombre: "Daniela S.",
-    rol: "Alumna — Postres para Redes Sociales",
-    foto: "https://placehold.co/500x400/F3B8C4/4A2E28?text=Daniela",
-    video: null,
-    quote: "Aprendí a grabar con el celular no más y mis videos empezaron a tener más vistas. De ahí me llegaron mis primeros pedidos grandes.",
+    nombre: "Carolina.",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-fran.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
+    quote: "Carolina <br>Wsp +56999839098<br>Las Cabras - Rapel" ,
   },
   {
     nombre: "Valentina T.",

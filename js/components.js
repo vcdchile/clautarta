@@ -78,9 +78,6 @@ function renderHeader(activePage) {
             <button class="nav-search-toggle" id="navSearchToggle" aria-label="Buscar en el sitio" aria-expanded="false">
               ${ICONS.search}
             </button>
-            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-              ${ICONS.menu}
-            </button>
           </div>
         </div>
         <div class="nav-search-panel" id="navSearchPanel">
@@ -90,22 +87,11 @@ function renderHeader(activePage) {
           </div>
           <div class="nav-search-results" id="navSearchResults"></div>
         </div>
-        <div class="nav-mobile-panel" id="navMobilePanel">
+        <nav class="nav-quick-links" aria-label="Navegación rápida">
           ${mobileLinks}
-        </div>
+        </nav>
       </div>
     `;
-
-    const toggle = document.getElementById("navToggle");
-    const panel = document.getElementById("navMobilePanel");
-    let open = false;
-    toggle.addEventListener("click", () => {
-      open = !open;
-      panel.classList.toggle("open", open);
-      toggle.setAttribute("aria-expanded", String(open));
-      toggle.innerHTML = open ? ICONS.close : ICONS.menu;
-      if (open) closeSearch();
-    });
 
     initSiteSearch();
   }
@@ -236,12 +222,6 @@ function initSiteSearch() {
     open = !open;
     panel.classList.toggle("open", open);
     toggle.setAttribute("aria-expanded", String(open));
-    const mobilePanel = document.getElementById("navMobilePanel");
-    const navToggle = document.getElementById("navToggle");
-    if (open && mobilePanel) {
-      mobilePanel.classList.remove("open");
-      if (navToggle) { navToggle.setAttribute("aria-expanded", "false"); navToggle.innerHTML = ICONS.menu; }
-    }
     if (open) setTimeout(() => input.focus(), 150);
   });
 
