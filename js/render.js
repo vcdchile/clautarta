@@ -117,11 +117,12 @@ function renderTestimonials() {
 
   const mediaHTML = (t) => {
     if (t.video) {
-      const hasMini = !!t.miniatura;
+      const miniSrc = t.miniatura || t.foto;
+      const hasMini = !!miniSrc;
       return `
         <button type="button" class="testi-video-thumb" data-video="${t.video}"
           aria-label="Reproducir video de ${t.nombre}"
-          style="${hasMini ? `background-image:url('${t.miniatura}')` : ""}">
+          style="${hasMini ? `background-image:url('${miniSrc}')` : ""}">
           ${!hasMini ? `<span class="testi-video-fallback">${ICONS.tiktok}<span>Ver video</span></span>` : ""}
           <span class="play-badge"><span>${ICONS.play}</span></span>
         </button>`;
