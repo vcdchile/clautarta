@@ -589,67 +589,123 @@ const TESTIMONIOS = [
    {
     nombre: "Dulce Polita.",
     rol: "Alumna — Variso Cursos",
-    foto: "img/alumna-liz.jpg",
+    foto: "img/alumna-polita.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7644268807891995912",
     quote: "juan <br>Wsp +56934039949<br>santiago" ,
   },
     {
     nombre: "sweet Liz - Nicol",
     rol: "Alumna — Variso Cursos",
-    foto: "img/alumna-fran.jpg",
+    foto: "img/alumna-liz.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7665456317686959368",
     quote: "Nicol <br>Wsp 56996715191<br>Las Hualpen" ,
   },
     {
+    nombre: "Andrea",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-andy.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7668651399084838152",
+    quote: "Andrea<br>Wsp +56972526902<br>Coronel" ,
+  },
+    {
+    nombre: "Sabor a Casa.",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-sabor.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7527406465695354117",
+    quote: "Sabor a Casa <br><br>La Florida" ,
+  },
+    {
+    nombre: "Annie's Delicias",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-bonet.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7500451966066150662",
+    quote: "Bonett <br>Wsp +56950640468<br>Santiago" ,
+  },
+    {
+    nombre: "Dulce Sarac",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-sarac.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7497780132380167430",
+    quote: "Sarai <br>Wsp +56998005880<br>Chillan" ,
+  },
+    {
+    nombre: "Jocelin - Sweet",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-sweet.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7493375288961977605",
+    quote: "Jocelin <br>Wsp +56948610756<br>santiago" ,
+  },
+    {
+    nombre: "Stefi",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-flami.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7493276297217510711",
+    quote: "Stefi <br>Wsp +56971745235<br>Rancagua" ,
+  },
+    {
+    nombre: "Delicias A&M ",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-aym.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7492987492249963782",
+    quote: "Maria Jose <br>Wsp +56963504936<br>santiago" ,
+  },
+    {
+    nombre: "Amasa2",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-freddy.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7490237894397889798",
+    quote: "Freddy <br>Wsp +56989810382<br>Puente Alto  - Santiago" ,
+  },
+      {
+    nombre: "Delicias Nina",
+    rol: "Alumna — Variso Cursos",
+    foto: "img/alumna-lore.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7488213760709004550",
+    quote: "Loreto<br>Wsp +56997952442<br>Santiago" ,
+  },
+      {
     nombre: "Carolina.",
     rol: "Alumna — Variso Cursos",
     foto: "img/alumna-fran.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
     quote: "Carolina <br>Wsp +56999839098<br>Las Cabras - Rapel" ,
   },
-    {
+      {
     nombre: "Carolina.",
     rol: "Alumna — Variso Cursos",
     foto: "img/alumna-fran.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
     quote: "Carolina <br>Wsp +56999839098<br>Las Cabras - Rapel" ,
   },
-    {
+      {
     nombre: "Carolina.",
     rol: "Alumna — Variso Cursos",
     foto: "img/alumna-fran.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
     quote: "Carolina <br>Wsp +56999839098<br>Las Cabras - Rapel" ,
   },
-    {
+      {
     nombre: "Carolina.",
     rol: "Alumna — Variso Cursos",
     foto: "img/alumna-fran.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
     quote: "Carolina <br>Wsp +56999839098<br>Las Cabras - Rapel" ,
   },
-    {
+      {
     nombre: "Carolina.",
     rol: "Alumna — Variso Cursos",
     foto: "img/alumna-fran.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
     quote: "Carolina <br>Wsp +56999839098<br>Las Cabras - Rapel" ,
   },
-    {
+      {
     nombre: "Carolina.",
     rol: "Alumna — Variso Cursos",
     foto: "img/alumna-fran.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
     quote: "Carolina <br>Wsp +56999839098<br>Las Cabras - Rapel" ,
   },
-    {
-    nombre: "Carolina.",
-    rol: "Alumna — Variso Cursos",
-    foto: "img/alumna-fran.jpg",
-    video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
-    quote: "Carolina <br>Wsp +56999839098<br>Las Cabras - Rapel" ,
-  },
-    {
+      {
     nombre: "Carolina.",
     rol: "Alumna — Variso Cursos",
     foto: "img/alumna-fran.jpg",
@@ -659,10 +715,10 @@ const TESTIMONIOS = [
 ];
 
 const STATS = [
-  { num: "500+", label: "Alumnas activas" },
+  { num: "500+", label: "Alumnos activas" },
   { num: "11", label: "Cursos disponibles" },
-  { num: "4.9★", label: "Valoración promedio" },
-  { num: "+300", label: "Emprendimientos iniciados" },
+  { num: "+300", label: "Emprendimientos iniciados" },  
+  { num: "+15", label: "Años de Experiencia" },
 ];
 
 /* Puntos de venta — físicos o de referencia.
@@ -722,6 +778,70 @@ const PUNTOS_VENTA = [
     linkTexto: "Coordinar por WhatsApp",
   },
     {
+    nombre: "Andrea",
+    ciudad: "Coronel",
+    contacto: "56972526902",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+    {
+    nombre: "Annie's Delicias - Bonett",
+    ciudad: "Santiago",
+    contacto: "56920282253",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+    {
+    nombre: "Sarac",
+    ciudad: "Chillan",
+    contacto: "56998005880",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+    {
+    nombre: "sweet",
+    ciudad: "santiago",
+    contacto: "56948610756",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+{
+    nombre: "Dulces Fami - Stefi",
+    ciudad: "Rancagua",
+    contacto: "56971745235",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+{
+    nombre: "Delicias A&M - Maria Jose",
+    ciudad: "Santiago",
+    contacto: "56963504936",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+      {
+    nombre: "Amasa2 - Freddy ",
+    ciudad: "Puente Alto",
+    contacto: "56989810382",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+      {
+    nombre: "Delicias Nina - Loreto ",
+    ciudad: "santiago",
+    contacto: "56997952442",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+      {
     nombre: "Nefercake  - Natalia",
     ciudad: "Recoleta",
     contacto: "56920282253",
@@ -729,7 +849,7 @@ const PUNTOS_VENTA = [
     link: "#",
     linkTexto: "Coordinar por WhatsApp",
   },
-    {
+      {
     nombre: "Nefercake  - Natalia",
     ciudad: "Recoleta",
     contacto: "56920282253",
@@ -737,7 +857,7 @@ const PUNTOS_VENTA = [
     link: "#",
     linkTexto: "Coordinar por WhatsApp",
   },
-    {
+      {
     nombre: "Nefercake  - Natalia",
     ciudad: "Recoleta",
     contacto: "56920282253",
@@ -745,7 +865,23 @@ const PUNTOS_VENTA = [
     link: "#",
     linkTexto: "Coordinar por WhatsApp",
   },
-    {
+      {
+    nombre: "Nefercake  - Natalia",
+    ciudad: "Recoleta", 
+    contacto: "56920282253",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+      {
+    nombre: "Nefercake  - Natalia",
+    ciudad: "Recoleta",
+    contacto: "56920282253",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+      {
     nombre: "Nefercake  - Natalia",
     ciudad: "Recoleta",
     contacto: "56920282253",
