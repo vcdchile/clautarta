@@ -688,16 +688,18 @@ ul { padding-left: 1.2em; }
 .pv-row {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 4px;
+  gap: 8px;
   padding: 16px 20px;
   border-bottom: 1px solid var(--pink-soft);
+  align-items: start;
 }
 .pv-row:last-child { border-bottom: none; }
 .pv-row-head { display: none; }
 @media (min-width: 700px) {
-  .pv-row { grid-template-columns: 2fr 1fr 1.2fr; align-items: center; gap: 10px; }
+  .pv-row { grid-template-columns: 2fr 1fr 1.2fr auto; align-items: center; gap: 10px; }
   .pv-row-head {
     display: grid;
+    grid-template-columns: 2fr 1fr 1.2fr auto;
     background: var(--pink-soft);
     font-size: .74rem;
     font-weight: 800;
@@ -713,6 +715,22 @@ ul { padding-left: 1.2em; }
 @media (min-width: 700px) { .pv-ciudad::before { content: ""; } }
 .pv-contacto::before { content: "☎ "; }
 @media (min-width: 700px) { .pv-contacto::before { content: ""; } }
+.pv-wsp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: start;
+  background: #25D366;
+  color: var(--white);
+  font-weight: 700;
+  font-size: .82rem;
+  padding: 8px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+  transition: transform .15s ease, background .15s ease;
+}
+.pv-wsp-btn:hover { background: #1ebe5a; transform: translateY(-1px); }
+.pv-wsp-btn svg { width: 15px; height: 15px; }
 .pv-empty {
   text-align: center;
   color: var(--cocoa-soft);

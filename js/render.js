@@ -229,15 +229,24 @@ function renderPuntosVenta(filtro) {
   el.innerHTML = `
     <div class="pv-table">
       <div class="pv-row pv-row-head">
-        <span>Nombre</span><span>Ciudad</span><span>Contacto</span>
+        <span>Nombre</span><span>Ciudad</span><span>Contacto</span><span></span>
       </div>
-      ${data.map(p => `
+      ${data.map(p => {
+        const tel = (p.contacto || "").replace(/\D/g, "");
+        const msg = encodeURIComponent(`Hola ${p.nombre}, te escribo por Clautartas, quiero coordinar contigo.`);
+        return `
         <div class="pv-row">
           <span class="pv-nombre">${p.nombre}</span>
           <span class="pv-ciudad">${p.ciudad || "—"}</span>
           <span class="pv-contacto">${p.contacto || "—"}</span>
+          ${tel ? `
+            <a class="pv-wsp-btn" href="https://wa.me/${tel}?text=${msg}" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp a ${p.nombre}">
+              ${ICONS.whatsapp} <span>WhatsApp</span>
+            </a>
+          ` : `<span></span>`}
         </div>
-      `).join("")}
+      `;
+      }).join("")}
     </div>
   `;
 }

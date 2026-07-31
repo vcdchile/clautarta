@@ -589,16 +589,16 @@ const TESTIMONIOS = [
    {
     nombre: "Dulce Polita.",
     rol: "Alumna — Variso Cursos",
-    foto: "img/alumna-polita.jpg",
+    foto: "img/alumna-liz.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7644268807891995912",
     quote: "juan <br>Wsp +56934039949<br>santiago" ,
   },
     {
-    nombre: "Carolina.",
+    nombre: "sweet Liz - Nicol",
     rol: "Alumna — Variso Cursos",
     foto: "img/alumna-fran.jpg",
-    video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
-    quote: "Carolina <br>Wsp +56999839098<br>Las Cabras - Rapel" ,
+    video:"https://www.tiktok.com/@clautartas/video/7665456317686959368",
+    quote: "Nicol <br>Wsp 56996715191<br>Las Hualpen" ,
   },
     {
     nombre: "Carolina.",
@@ -714,9 +714,9 @@ const PUNTOS_VENTA = [
     linkTexto: "Coordinar por WhatsApp",
   },
     {
-    nombre: "Nefercake  - Natalia",
-    ciudad: "Recoleta",
-    contacto: "56920282253",
+    nombre: "sweet Liz - Nicol",
+    ciudad: "Hualpen",
+    contacto: "56996715191",
     detalle: "al detalle y x mayor.",
     link: "#",
     linkTexto: "Coordinar por WhatsApp",
