@@ -80,6 +80,22 @@ function renderCarousel() {
 
 /* ---------- COURSE CARD (index.html) ---------- */
 function courseCardHTML(c) {
+  if (c.proximamente) {
+    return `
+      <article class="course-card course-card-soon" aria-disabled="true">
+        <div class="course-media course-media-soon">
+          <span class="badge-soon">Próximamente</span>
+          <img src="${c.imagen}" alt="${c.titulo} (próximamente)" loading="lazy">
+        </div>
+        <div class="course-body">
+          <span class="course-tag">${c.categoria}</span>
+          <h3>${c.titulo}</h3>
+          <p class="course-desc">Muy pronto disponible. ¡Vuelve a revisar!</p>
+          <span class="course-cta course-cta-disabled">Próximamente</span>
+        </div>
+      </article>
+    `;
+  }
   const chips = ["pdf", "planilla", "wsp", "telegram", "videos"]
     .map(tipo => resourceChip(tipo, c.recursos[tipo])).join("");
   return `
@@ -233,7 +249,7 @@ function renderPuntosVenta(filtro) {
       </div>
       ${data.map(p => {
         const tel = (p.contacto || "").replace(/\D/g, "");
-        const msg = encodeURIComponent(`Hola ${p.nombre}, te encontre en Clautartas.com, quiero cotizar.`);
+        const msg = encodeURIComponent(`Hola ${p.nombre}, te encontré en Clautartas.com, quiero cotizar.`);
         return `
         <div class="pv-row">
           <span class="pv-nombre">${p.nombre}</span>
@@ -260,6 +276,11 @@ function renderCursoDetalle() {
   const id = Number(params.get("id"));
   const curso = CURSOS.find(c => c.id === id) || CURSOS[0];
 
+  if (curso.proximamente) {
+    window.location.href = "index.html";
+    return;
+  }
+
   document.title = `${curso.titulo} — Clautartas`;
   const metaDesc = document.getElementById("metaDescripcion");
   if (metaDesc) metaDesc.setAttribute("content", curso.descripcionCorta);
@@ -267,6 +288,8 @@ function renderCursoDetalle() {
   if (ogTitulo) ogTitulo.setAttribute("content", `${curso.titulo} — Clautartas`);
   const ogDesc = document.getElementById("ogDescripcion");
   if (ogDesc) ogDesc.setAttribute("content", curso.descripcionCorta);
+  const canonical = document.getElementById("canonicalLink");
+  if (canonical) canonical.setAttribute("href", `https://clautartas.com/curso.html?id=${curso.id}`);
 
   const temasHTML = curso.temas.map(t => `<li>${ICONS.check}<span>${t}</span></li>`).join("");
 

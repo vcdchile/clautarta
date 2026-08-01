@@ -152,7 +152,7 @@ function buildSearchIndex() {
   ];
 
   if (typeof CURSOS !== "undefined") {
-    CURSOS.forEach(c => {
+    CURSOS.filter(c => !c.proximamente).forEach(c => {
       index.push({
         tipo: "Curso",
         titulo: c.titulo,

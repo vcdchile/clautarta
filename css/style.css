@@ -388,6 +388,31 @@ ul { padding-left: 1.2em; }
   padding: 4px 10px;
   border-radius: 999px;
 }
+
+/* Curso "próximamente": se muestra pero no es clickable */
+.course-card-soon { opacity: .92; }
+.course-media-soon { cursor: default; }
+.course-media-soon .badge-soon {
+  position: absolute; top: 10px; left: 10px;
+  z-index: 2;
+}
+.badge-soon {
+  background: var(--berry);
+  color: var(--cream);
+  font-size: .68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  padding: 4px 10px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+}
+.course-cta-disabled {
+  background: var(--pink-soft);
+  color: var(--cocoa-soft);
+  cursor: default;
+  pointer-events: none;
+}
 .course-media .play-badge {
   position: absolute; inset: 0;
   display: flex; align-items: center; justify-content: center;
