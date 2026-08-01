@@ -25,6 +25,7 @@ const ICONS = {
   mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>`,
   clock: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>`,
   search: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>`,
+  mercadolibre: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8h12l-1.2 12.2a1.8 1.8 0 0 1-1.8 1.8H9a1.8 1.8 0 0 1-1.8-1.8L6 8z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/><path d="M9.5 12.5c.6.6 1.4.9 2.5.9s1.9-.3 2.5-.9"/></svg>`,
 };
 
 function waLink(customMsg) {
@@ -44,14 +45,15 @@ function renderHeader(activePage) {
     { href: "resultados.html", label: "Resultados" },
     { href: "puntos-venta.html", label: "Puntos de venta" },
     { href: "contacto.html", label: "Contacto" },
+    { href: "https://meli.la/1pb1iuY", label: "Insumos", external: true },
   ];
 
   const desktopLinks = pages.map(p =>
-    `<a href="${p.href}" class="${activePage === p.href ? "active" : ""}">${p.label}</a>`
+    `<a href="${p.href}" ${p.external ? 'target="_blank" rel="noopener"' : ""} class="${activePage === p.href ? "active" : ""}">${p.label}</a>`
   ).join("");
 
   const mobileLinks = pages.map(p =>
-    `<a href="${p.href}" class="${activePage === p.href ? "active" : ""}">${p.label}</a>`
+    `<a href="${p.href}" ${p.external ? 'target="_blank" rel="noopener"' : ""} class="${activePage === p.href ? "active" : ""}">${p.label}</a>`
   ).join("");
 
   const header = document.getElementById("site-header");
@@ -72,7 +74,6 @@ function renderHeader(activePage) {
 
       <div class="nav-wrap">
         <div class="nav-bar">
-          <span class="nav-brand-mini">Clautartas</span>
           <div class="nav-links">${desktopLinks}</div>
           <div class="nav-actions">
             <button class="nav-search-toggle" id="navSearchToggle" aria-label="Buscar en el sitio" aria-expanded="false">
@@ -107,6 +108,19 @@ function renderHeader(activePage) {
     wa.setAttribute("aria-label", "Escríbenos por WhatsApp");
     wa.innerHTML = ICONS.whatsapp;
     document.body.appendChild(wa);
+  }
+
+  /* Floating Mercado Libre button — every page */
+  if (!document.getElementById("mlFloat")) {
+    const ml = document.createElement("a");
+    ml.id = "mlFloat";
+    ml.className = "ml-float";
+    ml.href = "https://meli.la/1pb1iuY";
+    ml.target = "_blank";
+    ml.rel = "noopener";
+    ml.setAttribute("aria-label", "Compra insumos en Mercado Libre");
+    ml.innerHTML = ICONS.mercadolibre;
+    document.body.appendChild(ml);
   }
 }
 

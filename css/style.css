@@ -167,8 +167,6 @@ ul { padding-left: 1.2em; }
   background: var(--caramel);
   color: var(--cocoa);
 }
-.nav-brand-mini { color: var(--cream); font-weight: 800; font-family: var(--font-display); font-style: italic; }
-
 /* Fila de accesos rápidos, siempre visible en mobile (sin menú oculto) */
 .nav-quick-links {
   display: flex;
@@ -745,6 +743,8 @@ ul { padding-left: 1.2em; }
   align-items: center;
   gap: 6px;
   align-self: start;
+  justify-self: start;
+  width: fit-content;
   background: #25D366;
   color: var(--white);
   font-weight: 700;
@@ -1022,6 +1022,25 @@ ul { padding-left: 1.2em; }
 @media (prefers-reduced-motion: reduce) {
   .wa-float { animation: none; }
 }
+
+/* ============================================
+   FLOATING MERCADO LIBRE BUTTON
+   ============================================ */
+.ml-float {
+  position: fixed;
+  right: 18px;
+  bottom: 88px;
+  z-index: 999;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #FFE600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 24px rgba(255, 230, 0, 0.45);
+}
+.ml-float svg { width: 28px; height: 28px; color: #2D3277; }
 
 /* ============================================
    FOOTER
