@@ -233,7 +233,7 @@ function renderPuntosVenta(filtro) {
       </div>
       ${data.map(p => {
         const tel = (p.contacto || "").replace(/\D/g, "");
-        const msg = encodeURIComponent(`Hola ${p.nombre}, te escribo por Clautartas, quiero coordinar contigo.`);
+        const msg = encodeURIComponent(`Hola ${p.nombre}, te encontre en Clautartas.com, quiero cotizar.`);
         return `
         <div class="pv-row">
           <span class="pv-nombre">${p.nombre}</span>
