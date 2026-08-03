@@ -552,12 +552,19 @@ const PROMOS = [
      quote: "...",
    } */
 const TESTIMONIOS = [
+   {
+    nombre: "Patricia Miranda",
+    rol: "Alumna — Varios Cursos",
+    foto: "img/alumna-miranda.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7669336876490460434",
+    quote: "Yasna <br>Wsp +56965799231<br>La Cruz" ,
+  },
   {
     nombre: "Dulce Septiembre.",
     rol: "Alumna — Varios Cursos",
     foto: "img/alumna-septiembre.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7650228291047116039",
-    quote: "Berny Casanova<br>Wsp +56974426290<br>STGO" ,
+    quote: "Patricia Miranda<br>Wsp +56971387645<br>STGO" ,
   },
   {
     nombre: "NEFERCAKE.",
@@ -850,6 +857,14 @@ const PUNTOS_VENTA = [
     nombre: "Dulce Manzanita - Yasna",
     ciudad: "La Cruz", 
     contacto: "56965799231",
+    detalle: "al detalle y x mayor.",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+      {
+    nombre: "Patricia Miranda",
+    ciudad: "Coquimbo", 
+    contacto: "56971387645",
     detalle: "al detalle y x mayor.",
     link: "#",
     linkTexto: "Coordinar por WhatsApp",
