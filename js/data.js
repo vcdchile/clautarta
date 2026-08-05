@@ -553,6 +553,14 @@ const PROMOS = [
    } */
 const TESTIMONIOS = [
    {
+    
+    nombre: "Patricia Miranda",
+    rol: "Alumna — Varios Cursos",
+    foto: "img/alumna-lucia.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7670357974686158088",
+    quote: "Lucia <br>Wsp +56981812381<br>Lago Ranco" ,
+  },
+   {
     nombre: "Patricia Miranda",
     rol: "Alumna — Varios Cursos",
     foto: "img/alumna-miranda.jpg",
@@ -717,6 +725,15 @@ const STATS = [
    - link (opcional): si tienes un link (mapa, WhatsApp, etc.)
    - linkTexto (opcional): texto del botón del link */
 const PUNTOS_VENTA = [
+
+  {
+    nombre: "Lucia  ",
+    ciudad: "Rio Bueno",
+    contacto: "56981812381",
+    detalle: "al detalle y x mayor",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
   {
     nombre: "Berny Casanova ",
     ciudad: "Santiago",
