@@ -554,6 +554,22 @@ const PROMOS = [
 const TESTIMONIOS = [
    {
     
+    nombre: "Sabores de Sandrita",
+    rol: "Alumna — Varios Cursos",
+    foto: "img/alumna-sandrita.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7670357974686158088",
+    quote: "Sandra <br>Wsp +56951692858<br>San carlos" ,
+  },
+   {
+    
+    nombre: "Pasteles Jessy",
+    rol: "Alumna — Varios Cursos",
+    foto: "img/alumna-jessy.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7671519641004444935",
+    quote: "Jessuca <br>Wsp +56984726275<br>Colbun" ,
+  },
+   {
+    
     nombre: "Lucia",
     rol: "Alumna — Varios Cursos",
     foto: "img/alumna-lucia.jpg",
@@ -726,6 +742,22 @@ const STATS = [
    - linkTexto (opcional): texto del botón del link */
 const PUNTOS_VENTA = [
 
+  {
+    nombre: "Sandra ",
+    ciudad: "San Carlos",
+    contacto: "56951692858",
+    detalle: "al detalle y x mayor",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+  {
+    nombre: "Jesica  ",
+    ciudad: "Colbun",
+    contacto: "56984726275",
+    detalle: "al detalle y x mayor",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
   {
     nombre: "Lucia  ",
     ciudad: "Rio Bueno",
