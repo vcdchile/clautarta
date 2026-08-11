@@ -554,11 +554,11 @@ const PROMOS = [
 const TESTIMONIOS = [
    {
     
-    nombre: "Patricia Miranda",
+    nombre: "Lucia",
     rol: "Alumna — Varios Cursos",
     foto: "img/alumna-lucia.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7670357974686158088",
-    quote: "Lucia <br>Wsp +56981812381<br>Lago Ranco" ,
+    quote: "Lucia <br>Wsp +56981812381<br>rio bueno" ,
   },
    {
     nombre: "Patricia Miranda",
@@ -697,7 +697,7 @@ const TESTIMONIOS = [
     nombre: "Delicias de ls Abu",
     rol: "Alumna — Varios Cursos",
     foto: "img/alumna-abu.jpg",
-    video:"https://www.tiktok.com/@clautartas/video/7645007275798564104",
+    video:"https://www.tiktok.com/@clautartas/video/7487083003680738615",
     quote: "jaqueline <br>Wsp +56961472297<br>Santiago" ,
   },
       {
