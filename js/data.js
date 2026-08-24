@@ -471,6 +471,47 @@ const CURSOS = [
   },
  {
     id: 11,
+    slug: "Empanadas Dulces",
+    categoria: "masas",
+    badgeNuevo: false,
+    titulo: "Masa y pasta Dulce",
+    subtitulo: "Receta Innovadora, ideal para cocteleria y mesas dulces",
+    imagen: "img/empanada.jpg",
+    descripcionCorta: "Receta Innovadora, ideal para cocteleria y mesas dulces.",
+    descripcionLarga: "Excelente opcion para emprendedores en gastronomia. Producto de larga duración (mas de 30 dias), fácil Preparación en volumen.  ",
+    temas: [
+      "Varias opciones de presentación",
+      "Varios sabores",
+      "Varios colores",
+      "Larga duración",
+	  "PDF explicativo paso a paso",
+      "Soporte por grupo de wsp",
+      "Videos paso a paso",
+	  "Respaldo online del curso completo",
+    ],
+    fotos: [
+	  "img/emp1.jpg",
+	  "img/emp2.jpg",
+	  "img/emp3.jpg",
+	  "img/emp4.jpg",
+    ],
+    tiktoks: [
+      "https://www.tiktok.com/@clautartas/video/7677439875359984903",
+      "https://www.tiktok.com/@clautartas/video/7677436919587900680",
+    ],
+    precio: "$20.000",
+    precioOferta: "$15.000",
+    precioNota: "Pago único • acceso de por vida",
+    recursos: {
+      pdf: "#",
+      planilla: "#",
+      wsp: "#",
+      telegram: "#",
+      videos: "#",
+    },
+  },
+ {
+    id: 12,
     slug: "Empanadas Dulces ",
     categoria: "Personalizadas",
     badgeNuevo: false,
@@ -552,8 +593,22 @@ const PROMOS = [
      quote: "...",
    } */
 const TESTIMONIOS = [
+ {
+    nombre: "Delicias de Mamá",
+    rol: "Alumna — Varios Cursos",
+    foto: "img/alumna-pily..jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7676722615695756551",
+    quote: "Pilar <br>Wsp +56976889399<br>Punta Arenas" ,
+  },
    {
     
+    nombre: "Dulce Morita",
+    rol: "Alumna — Varios Cursos",
+    foto: "img/alumna-mora.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7673939419631586567",
+    quote: "Ricardo <br>Wsp +56996878279<br>Recinto" ,
+  },
+ {
     nombre: "Sabores de Sandrita",
     rol: "Alumna — Varios Cursos",
     foto: "img/alumna-sandrita.jpg",
@@ -567,14 +622,6 @@ const TESTIMONIOS = [
     foto: "img/alumna-jessy.jpg",
     video:"https://www.tiktok.com/@clautartas/video/7671519641004444935",
     quote: "Jessuca <br>Wsp +56984726275<br>Colbun" ,
-  },
-   {
-    
-    nombre: "Lucia",
-    rol: "Alumna — Varios Cursos",
-    foto: "img/alumna-lucia.jpg",
-    video:"https://www.tiktok.com/@clautartas/video/7670357974686158088",
-    quote: "Lucia <br>Wsp +56981812381<br>rio bueno" ,
   },
    {
     nombre: "Patricia Miranda",
@@ -741,8 +788,23 @@ const STATS = [
    - link (opcional): si tienes un link (mapa, WhatsApp, etc.)
    - linkTexto (opcional): texto del botón del link */
 const PUNTOS_VENTA = [
-
+ {
+    nombre: "Pilar",
+    ciudad: "Punta Arenas",
+    contacto: "56976889399",
+    detalle: "al detalle y x mayor",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
   {
+    nombre: "Ricardo  ",
+    ciudad: "Recinto",
+    contacto: "56996878279",
+    detalle: "al detalle y x mayor",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
+ {
     nombre: "Sandra ",
     ciudad: "San Carlos",
     contacto: "56951692858",
