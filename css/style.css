@@ -3,7 +3,7 @@
    Paleta: pastel dulce (rosados, cremas, berry, caramelo)
    ============================================ */
 :root {
-  --cream:        #FBF2E9;
+  --cream:        #EFDCC8; /* fondo general — antes #FBF2E9, ahora más oscuro. Cambia solo este valor para ajustar el tono */
   --cream-soft:   #FDF8F3;
   --pink-frost:   #F3B8C4;
   --pink-soft:    #FBE1E6;
@@ -362,9 +362,14 @@ ul { padding-left: 1.2em; }
   overflow: hidden;
   box-shadow: var(--shadow-soft);
 }
+/* Antes, desde 560px la card pasaba a 2 columnas (imagen a la izquierda, texto a la
+   derecha) — eso era lo que se veía apretado/cortado en PC. Ahora se mantiene
+   siempre en formato vertical (imagen arriba, texto abajo), igual que en Android.
+   Si quieres volver al formato horizontal en pantallas grandes, descomenta esto:
 @media (min-width: 560px) {
   .course-card { grid-template-columns: 1.1fr 1fr; }
 }
+*/
 
 .course-media {
   position: relative;
@@ -375,7 +380,8 @@ ul { padding-left: 1.2em; }
   height: 190px;
   object-fit: cover;
 }
-@media (min-width: 560px) { .course-media img { height: 100%; min-height: 220px; } }
+/* Imagen un poco más alta en pantallas grandes ya que la card es más ancha */
+@media (min-width: 560px) { .course-media img { height: 220px; } }
 .course-media .badge-new {
   position: absolute; top: 10px; left: 10px;
   background: var(--caramel);

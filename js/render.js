@@ -459,9 +459,6 @@ function renderPromoPopup() {
 
   overlay.querySelector(".promo-close").addEventListener("click", close);
   overlay.addEventListener("click", (e) => { if (e.target === overlay) close(); });
-  overlay.querySelectorAll(".promo-slide").forEach(slide => {
-    slide.addEventListener("click", (e) => { e.preventDefault(); close(); });
-  });
   document.addEventListener("keydown", function escClose(e) {
     if (e.key === "Escape") { close(); document.removeEventListener("keydown", escClose); }
   });
