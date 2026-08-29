@@ -87,10 +87,10 @@ const CURSOS = [
     id: 2,
     slug: "Horneado",
     categoria: "Destacado",
-    badgeNuevo: false,
+    badgeNuevo: true,
     titulo: "Curso Horneado",
     subtitulo: "Textura perfecta, larga duración, ideal para emprender",
-    imagen: "img/horneado.webp",
+    imagen: "img/horneado.jpg",
     descripcionCorta: "La receta y técnica exacta para lograr kuchen y Pies perfectos y sin fallas.",
     descripcionLarga: "Vas a dominar la técnica del Horneado, relleno cremoso que corta bien y coberturas que enamoran a simple vista. Ideal para vender por porciones o tartas enteras.",
     temas: [
@@ -127,7 +127,7 @@ const CURSOS = [
       pdf: "#",
       planilla: "#",
       wsp: "#",
-      telegram: null,
+      telegram: "#",
       videos: "#",
     },
   },
@@ -473,7 +473,7 @@ const CURSOS = [
     id: 11,
     slug: "Empanadas Dulces",
     categoria: "masas",
-    badgeNuevo: false,
+    badgeNuevo: true,
     titulo: "Masa y pasta Dulce",
     subtitulo: "Receta Innovadora, ideal para cocteleria y mesas dulces",
     imagen: "img/empanada.jpg",
@@ -593,6 +593,13 @@ const PROMOS = [
      quote: "...",
    } */
 const TESTIMONIOS = [
+ {
+    nombre: "Dulce Doly",
+    rol: "Alumna — Varios Cursos",
+    foto: "img/alumna-javi.jpg",
+    video:"https://www.tiktok.com/@clautartas/video/7679143103365958930",
+    quote: "Javiera <br>Wsp +56922336223<br> Osorno" ,
+  },
  {
     nombre: "Delicias de Mamá",
     rol: "Alumna — Varios Cursos",
@@ -788,6 +795,14 @@ const STATS = [
    - link (opcional): si tienes un link (mapa, WhatsApp, etc.)
    - linkTexto (opcional): texto del botón del link */
 const PUNTOS_VENTA = [
+ {
+    nombre: "Javiera",
+    ciudad: "Osorno",
+    contacto: "56922336223",
+    detalle: "al detalle y x mayor",
+    link: "#",
+    linkTexto: "Coordinar por WhatsApp",
+  },
  {
     nombre: "Pilar",
     ciudad: "Punta Arenas",
